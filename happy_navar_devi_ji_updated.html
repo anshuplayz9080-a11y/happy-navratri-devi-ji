@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Navaratri, My Devi Ji ❤️</title>
+<style>
+:root{--bg:#13051b;--pink:#ff4f91;--gold:#ffd782;--cream:#fff5e9;--violet:#9a55ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+#app{min-height:100vh;position:relative;isolation:isolate;background:radial-gradient(ellipse at 50% 0%,#55113d 0%,#210b2e 42%,#100414 100%)}
+#stars,.petals{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff4c4;box-shadow:0 0 12px #ffb9d5;animation:twinkle 2.5s infinite alternate}
+@keyframes twinkle{from{opacity:.2;transform:scale(.7)}to{opacity:1;transform:scale(1.5)}}
+.petal{position:absolute;top:-10vh;font-size:22px;animation:fall linear infinite;opacity:.65}
+@keyframes fall{to{transform:translateY(120vh) rotate(540deg)}}
+.screen{display:none;min-height:100vh;padding:26px 18px 48px;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.screen.active{display:flex;animation:appear .8s ease both}
+@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;color:var(--gold)}
+h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:700}
+h1{font-size:clamp(2.35rem,9vw,5.3rem);line-height:1.05;margin:14px 0;color:#fff3dc;text-shadow:0 0 25px #ff4f9177,0 4px 0 #76133f}
+h1 span{color:var(--gold)}
+h2{font-size:clamp(1.8rem,6vw,3rem);margin:10px 0 18px}
+p{line-height:1.7;color:#f8dce9;max-width:620px}
+.glow{font-size:clamp(5rem,24vw,10rem);font-weight:900;color:white;text-shadow:0 0 22px var(--pink),0 0 65px var(--violet);animation:pulse .8s ease-in-out infinite alternate}
+@keyframes pulse{to{transform:scale(1.08);text-shadow:0 0 35px var(--pink),0 0 90px var(--violet)}}
+.btn{border:1px solid #ffd78299;background:linear-gradient(135deg,#ff4f91,#9a42d7);color:white;border-radius:999px;padding:13px 23px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 8px 30px #ff4f9133;transition:transform .2s,filter .2s;margin:7px}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.btn.secondary{background:#ffffff0b;border-color:#ffffff40}
+.card{width:min(100%,650px);border:1px solid #ffd78255;background:linear-gradient(145deg,#ffffff13,#ffffff06);backdrop-filter:blur(10px);border-radius:26px;padding:clamp(20px,5vw,34px);box-shadow:0 18px 60px #0004}
+.badge{display:inline-block;padding:7px 13px;border:1px solid #ffd78266;border-radius:999px;color:var(--gold);font-size:.8rem}
+.game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.game-choice{min-height:92px;border-radius:18px;border:1px solid #ffb5d355;background:#ffffff0c;color:white;font-size:1rem;font-weight:700;padding:14px;cursor:pointer}
+.game-choice:hover{background:#ff4f9125;border-color:var(--gold)}
+#heartField{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px auto;max-width:360px}
+.heart{font-size:2rem;border:1px solid #ffffff25;border-radius:15px;background:#ffffff0b;min-height:64px;cursor:pointer}
+#progress{color:var(--gold);font-size:.9rem}
+input[type=file]{display:block;max-width:100%;margin:16px auto;color:#f8dce9}
+#photoPreview{max-width:100%;max-height:50vh;border-radius:22px;border:2px solid #ffd78288;display:none;margin:15px auto;box-shadow:0 0 40px #ff4f9133}
+.footer{font-size:.8rem;color:#d8b5d0;margin-top:24px}
+.confetti{position:fixed;top:-15px;pointer-events:none;z-index:5;animation:confettiFall 3.5s linear forwards}
+@keyframes confettiFall{to{transform:translateY(110vh) rotate(800deg);opacity:0}}
+@media(max-width:420px){.game-grid{grid-template-columns:1fr}.screen{padding-left:14px;padding-right:14px}}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="stars"></div><div class="petals" id="petals"></div>
+<section class="screen active" id="countdown">
+  <div class="eyebrow">A tiny surprise, made with love</div>
+  <div class="glow" id="countNum">1</div>
+  <p>Ready, Devi Ji? ✨</p>
+</section>
+<section class="screen" id="welcome">
+  <div class="eyebrow">🌺 Shubh Navaratri 🌺</div>
+  <h1>Happy Navaratri<br><span>My Devi Ji</span> ❤️</h1>
+  <p>A little surprise for my favourite big sister. This page is filled with games, smiles, and words I hope make you feel special. 🫶</p>
+  <div class="badge">Made with lots of love ♡</div>
+  <button class="btn" onclick="go('intro')">Open your surprise ✨</button>
+</section>
+<section class="screen" id="intro">
+  <div class="card">
+    <div class="eyebrow">A little thing I want you to know</div>
+    <h2>Not by blood,<br>but family by heart. 💗</h2>
+    <p>You are my <b>non-blood sister</b>, but you treat me like I was your blood brother. Thank you for being someone who makes the word “sister” feel so real and special. 🫂</p>
+    <p>Ab thoda sa game ho jaaye, Devi Ji? 😁</p>
+    <button class="btn" onclick="go('game1')">Let's play 🎮</button>
+  </div>
+</section>
+<section class="screen" id="game1">
+  <div class="card">
+    <div class="eyebrow">Mini game 01 · Choose with your heart</div>
+    <h2>What makes a bond special? 💞</h2>
+    <p>Choose the answer you like most.</p>
+    <div class="game-grid">
+      <button class="game-choice" onclick="answer1('Care and respect 🫶')">Care & respect 🫶</button>
+      <button class="game-choice" onclick="answer1('Laughing together 😂')">Laughing together 😂</button>
+      <button class="game-choice" onclick="answer1('Being there for each other 🌷')">Being there 🌷</button>
+      <button class="game-choice" onclick="answer1('All of these, obviously! 💖')">All of these! 💖</button>
+    </div>
+    <p id="answer1" aria-live="polite"></p>
+    <button class="btn" id="next1" style="display:none" onclick="go('game2')">Next game ➜</button>
+  </div>
+</section>
+<section class="screen" id="game2">
+  <div class="card">
+    <div class="eyebrow">Mini game 02 · Find the hidden love</div>
+    <h2>Tap 5 hearts 💗</h2>
+    <p>Every heart is carrying a little message for you.</p>
+    <div id="heartField"></div>
+    <p id="progress">Hearts found: 0 / 5</p>
+    <p id="heartMessage" aria-live="polite"></p>
+    <button class="btn" id="next2" style="display:none" onclick="go('game3')">One last game ➜</button>
+  </div>
+</section>
+<section class="screen" id="game3">
+  <div class="card">
+    <div class="eyebrow">Mini game 03 · Sister quiz</div>
+    <h2>One last question 🌸</h2>
+    <p>What title will you always have in my little world?</p>
+    <div class="game-grid">
+      <button class="game-choice" onclick="finishQuiz()">My favourite Devi Ji 👑</button>
+      <button class="game-choice" onclick="finishQuiz()">My special big sis 🫂</button>
+      <button class="game-choice" onclick="finishQuiz()">My forever family 💖</button>
+      <button class="game-choice" onclick="finishQuiz()">All three! 😎</button>
+    </div>
+    <p id="quizReply" aria-live="polite"></p>
+    <button class="btn" id="photoNext" style="display:none" onclick="go('photo')">See the final surprise 🥹</button>
+  </div>
+</section>
+<section class="screen" id="photo">
+  <div class="card">
+    <div class="eyebrow">Our little memory 📸</div>
+    <h2>One picture. A thousand memories. ❤️</h2>
+    <p>Upload a photo of both of you here. It previews on this device; the picture isn't sent anywhere.</p>
+    <label class="btn secondary" for="photoInput">Choose our photo 📷</label>
+    <input id="photoInput" type="file" accept="image/*">
+    <img id="photoPreview" alt="Your chosen photo together">
+    <button class="btn" onclick="go('final'); celebrate()">Open my message 💌</button>
+    <p class="footer">Tip: choose your photo before opening the final message.</p>
+  </div>
+</section>
+<section class="screen" id="final">
+  <div class="card">
+    <div class="eyebrow">For my Devi Ji, with love</div>
+    <h1 style="font-size:clamp(2.2rem,8vw,4.2rem)">Happy Navaratri,<br><span>My Devi Ji</span> 🌺</h1>
+    <p>You are my non-blood sister, but you treat me like I was your blood brother. The love and care you give me make our bond feel just as real. Thank you for being my big sister, for treating me like family, and for being a beautiful part of my life.</p>
+    <p>May Maa Durga bless you with happiness, strength, peace, and endless reasons to smile. May every new beginning bring you something beautiful. 🙏✨</p>
+    <h2>Always my special sis. 🫂💗</h2>
+    <button class="btn" onclick="celebrate()">Send more hearts 💖</button>
+    <button class="btn secondary" onclick="go('welcome')">Replay the surprise ↻</button>
+  </div>
+</section>
+</div>
+<script>
+const screens=[...document.querySelectorAll('.screen')];
+function go(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='game2')buildHearts();}
+function addStars(){const box=document.getElementById('stars');for(let i=0;i<75;i++){const s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*3+'s';s.style.animationDuration=(1.5+Math.random()*3)+'s';box.appendChild(s)}}
+function addPetals(){const box=document.getElementById('petals');const symbols=['🌸','✨','🌺','💗','✦'];for(let i=0;i<18;i++){const p=document.createElement('span');p.className='petal';p.textContent=symbols[i%symbols.length];p.style.left=Math.random()*100+'%';p.style.animationDuration=(9+Math.random()*13)+'s';p.style.animationDelay=(-Math.random()*20)+'s';p.style.fontSize=(12+Math.random()*15)+'px';box.appendChild(p)}}
+addStars();addPetals();
+let n=1;const counter=document.getElementById('countNum');const timer=setInterval(()=>{n++;if(n<=3){counter.textContent=n}else{clearInterval(timer);counter.textContent='GO!';setTimeout(()=>go('welcome'),800)}},850);
+function answer1(msg){document.getElementById('answer1').textContent='Correct answer: every little thing that makes a bond beautiful. 💗 You chose: '+msg;document.getElementById('next1').style.display='inline-block';}
+const heartLines=['You are appreciated. 🌷','You make this bond special. 💖','You deserve endless happiness. ✨','Maa Durga always bless you. 🙏','You will always be my Devi Ji. 👑'];
+let found=0;
+function buildHearts(){if(document.getElementById('heartField').children.length)return;const field=document.getElementById('heartField');let order=[0,1,2,3,4,5,6,7];order.sort(()=>Math.random()-.5);order.forEach((v)=>{const b=document.createElement('button');b.className='heart';b.textContent='♡';b.setAttribute('aria-label','Tap a heart');b.onclick=()=>{if(b.disabled)return;b.disabled=true;b.textContent='💗';found++;document.getElementById('progress').textContent='Hearts found: '+Math.min(found,5)+' / 5';document.getElementById('heartMessage').textContent=heartLines[(found-1)%heartLines.length];if(found>=5){document.getElementById('next2').style.display='inline-block';document.querySelectorAll('.heart').forEach(x=>x.disabled=true)}};field.appendChild(b)});}
+function finishQuiz(){document.getElementById('quizReply').textContent='Correct! You are all of those and more to me, Devi Ji. 💖';document.getElementById('photoNext').style.display='inline-block';}
+document.getElementById('photoInput').addEventListener('change',e=>{const file=e.target.files&&e.target.files[0];if(!file)return;const img=document.getElementById('photoPreview');img.src=URL.createObjectURL(file);img.style.display='block';});
+function celebrate(){const icons=['💖','🌸','✨','💗','🌺','⭐'];for(let i=0;i<65;i++){const el=document.createElement('span');el.className='confetti';el.textContent=icons[Math.floor(Math.random()*icons.length)];el.style.left=Math.random()*100+'vw';el.style.fontSize=(14+Math.random()*20)+'px';el.style.animationDuration=(2+Math.random()*2)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),4300)}}
+</script>
+</body>
+</html>
